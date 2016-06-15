@@ -7,8 +7,8 @@ List View is initialised using the `list-view` option in the DataTables construc
 Example:
 
 ```js
-$(document).ready(function() {
-    $('#myTable').DataTable( {
+$(document).ready(function(){
+    $('#myTable').DataTable({
     	list-view: true
     });
 });
