@@ -9,7 +9,7 @@ Example:
 ```js
 $(document).ready(function(){
     $('#myTable').DataTable({
-    	list-view: true
+    	listView: true
     });
 });
 ```
