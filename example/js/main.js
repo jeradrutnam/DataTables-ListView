@@ -4,7 +4,6 @@ $(function(){
      *  data-tables config
      ***********************************************************/
     var tableBasic = $('#ajax-table').DataTable({
-        responsive: true,
         ajax: "data/table.json",
         columns: [
             { "data": "ID" },
@@ -22,7 +21,8 @@ $(function(){
     
     var tableMembers = $('#members').DataTable({
         listView: { 
-            gridView: false
+            gridView: false,
+            columnFilters: true
         },
         ajax: "data/table.json",
         columns: [

@@ -11,8 +11,10 @@
     <title>Example</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-wso2.min.css" rel="stylesheet">
+    <link href="libs/DataTables-1.10.13/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="libs/DataTables-1.10.13/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="../css/dataTables.listView.css" rel="stylesheet">
   </head>
 
@@ -28,7 +30,7 @@
       <div class="container">
         <h1 class="jumbotron-heading">Examples</h1>
         <p class="lead text-muted">Please note that you will have to run this on a server as it uses ajax call to GET data.</p>
-        <p class="hidden-sm-up">
+        <p class="hidden">
           <a href="#" class="btn btn-primary">Main call to action</a>
           <a href="#" class="btn btn-secondary">Secondary action</a>
         </p>
@@ -36,38 +38,50 @@
     </section>
       
     <section>
+        
         <div class="container">
-            <table id="ajax-table" class="table table-striped table-hover table-bordered display data-table" cellspacing="0">
+            <h2>Without ListView Plugin</h2>
+            <table id="ajax-table" class="table table-striped table-hover table-bordered display" cellspacing="0">
                 <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Device Type</th>
-                    <th>OS</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Device Type</th>
+                        <th>OS</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
                 </thead>
                 <tbody><!-- Dynamic Content Loads Here --></tbody>
             </table>
-
-            <table class="table table-responsive table-striped" id="members">
+        </div>
+        
+        <br><br>
+        
+        <div class="container">
+            <h2>Using ListView Plugin</h2>
+            <table class="table table-responsive table-striped display" id="members">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Member</th>
-                    <th>Email Address</th>
-                    <th></th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Member</th>
+                        <th>Email Address</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody><!-- Dynamic Content Loads Here --></tbody>
             </table>
-
-            <table class="table table-striped table-hover table-responsive list-table display responsive nowrap data-table" id="users">
+        </div>
+        
+        <br><br>
+        
+        <div class="container">
+            <h2>ListView Plugin with advance configurations</h2>
+            <table class="table table-striped table-hover table-responsive display" id="users">
                 <thead class="block">
                 <tr class="sort-row">
                     <th class="content-fill no-sort"></th>
@@ -158,9 +172,11 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/data-tables_1.10.12/media/js/jquery.dataTables.min.js"></script>
-    <script src="js/data-tables_1.10.12/media/js/dataTables.bootstrap4.min.js"></script>
+    <script src="libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="libs/DataTables-1.10.13/media/js/jquery.dataTables.min.js"></script>
+    <script src="libs/DataTables-1.10.13/media/js/dataTables.bootstrap.min.js"></script>
+    <script src="libs/DataTables-1.10.13/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="libs/DataTables-1.10.13/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
     <script src="../js/dataTables.listView.js"></script>
     <script src="js/main.js"></script>
   </body>

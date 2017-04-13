@@ -1,0 +1,27 @@
+/*
+ ~   DataTables ListView
+ ~   ©2017 http://jeradrutnam.com/
+ ~
+ ~   This requires DataTables 1.10.12 or newer with DataTables Bootstrap Extension.
+ ~
+ ~   @summary     ListView
+ ~   @description ListView tables plug-in for DataTables
+ ~   @version     1.0.0
+ ~   @file        dataTables.listView.css
+ ~   @author      Jerad Rutnam (www.jeradrutnam.com)
+ ~   @copyright   Copyright 2016-2017 JERAD RUTNAM™.
+ ~
+ ~   This source file is free software, available under the following license:
+ ~      
+ ~          MIT license - http://datatables.net/license/mit
+ ~
+ ~   This source file is distributed in the hope that it will be useful, but
+ ~   WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ ~   or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ ~
+ ~   For details please refer to: http://www.datatables.net
+*/
+
+.dataTable-listView.datatables-listview-layout .dataTables_filter { text-align: left; }
+.dataTable-listView.datatables-listview-layout .dataTables_length { padding-top: 5px; }
+.dataTable-listView.datatables-listview-layout .dataTables_info { padding-top: 9px; }
