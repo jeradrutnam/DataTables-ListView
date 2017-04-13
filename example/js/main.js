@@ -21,7 +21,9 @@ $(function(){
     });
     
     var tableMembers = $('#members').DataTable({
-        wso2: true,
+        listView: { 
+            gridView: false
+        },
         ajax: "data/table.json",
         columns: [
             { "data": "ID" },
@@ -80,7 +82,7 @@ $(function(){
     });
     
     var tableUsers = $('#device-grid,#users').DataTable({
-        wso2: true,
+        listView: true,
         ajax: "data/table.json",
         columns: [
             { "data": "Device_Type" },
@@ -169,7 +171,7 @@ $(function(){
             $('td:eq(7)', nRow).addClass('text-right content-fill text-left-on-grid-view no-wrap');
         },
         initComplete: function (){
-            $('.random-thumbs .thumbnail.icon').random_background_color();
+            
         }
     });
         

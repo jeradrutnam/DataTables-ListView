@@ -1,9 +1,26 @@
 /*
- ~   DataTables List View
- ~   ©2016 http://jeradrutnam.com/
+ ~   DataTables ListView
+ ~   ©2017 http://jeradrutnam.com/
  ~
- ~   List View Extension DataTables. This requires DataTables 1.10.12 or newer.
- */
+ ~   This requires DataTables 1.10.12 or newer.
+ ~
+ ~   @summary     ListView
+ ~   @description ListView tables plug-in for DataTables
+ ~   @version     1.0.0
+ ~   @file        dataTables.listView.js
+ ~   @author      Jerad Rutnam (www.jeradrutnam.com)
+ ~   @copyright   Copyright 2016-2017 JERAD RUTNAM™.
+ ~
+ ~   This source file is free software, available under the following license:
+ ~      
+ ~          MIT license - http://datatables.net/license/mit
+ ~
+ ~   This source file is distributed in the hope that it will be useful, but
+ ~   WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ ~   or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ ~
+ ~   For details please refer to: http://www.datatables.net
+*/
 
 (function(window, document, undefined){
 
@@ -11,23 +28,23 @@
         "use strict";
         
         /* Set the defaults for DataTables initialisation */
-        $.extend(true, DataTable.defaults, {
-            bSortCellsTop: true,
-            responsive: false,
-            autoWidth: false,
-            dom: '<"dataTablesTop"' +
-                'f' +
-                '<"dataTables_toolbar">' +
-                '>' +
-                'rt' +
-                '<"dataTablesBottom"' +
-                'lip' +
-                '>',
-            language: {
-                searchPlaceholder: 'Filter by ...',
-                search: ''
-            }
-        });
+//        $.extend(true, DataTable.defaults, {
+//            bSortCellsTop: true,
+//            responsive: false,
+//            autoWidth: false,
+//            dom: '<"dataTablesTop"' +
+//                'f' +
+//                '<"dataTables_toolbar">' +
+//                '>' +
+//                'rt' +
+//                '<"dataTablesBottom"' +
+//                'lip' +
+//                '>',
+//            language: {
+//                searchPlaceholder: 'Filter by ...',
+//                search: ''
+//            }
+//        });
         
         var listViewExtend = function(settings, opts) {
 
@@ -60,6 +77,8 @@
         listViewExtend.prototype = {
             
             _constructor: function(){
+                
+                console.log(this.c.gridView);
                 
 		        var dt = this.s.dt;
                 var elem = $('table', dt.table().container());
@@ -242,6 +261,9 @@
         }
         
         listViewExtend.defaults = {
+            listView:{
+                gridView: true
+            },
             bSortCellsTop: true,
             responsive: false,
             autoWidth: false,
@@ -284,7 +306,7 @@
 //            ) {
                 var init = settings.oInit.listView;
 
-                if (init !== false) {
+                if (init) {
                     new listViewExtend (settings, $.isPlainObject(init) ? init : {});
                 }
             //}
