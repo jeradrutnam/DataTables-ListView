@@ -3,7 +3,7 @@ $(function(){
     /***********************************************************
      *  data-tables config
      ***********************************************************/
-    var tableBasic = $('#ajax-table').DataTable({
+    var tableBasic = $('#table-default').DataTable({
         ajax: "data/table.json",
         columns: [
             { "data": "ID" },
@@ -19,7 +19,7 @@ $(function(){
         ]
     });
     
-    var tableMembers = $('#members').DataTable({
+    var tableMembers = $('#table-members').DataTable({
         listView: { 
             gridView: false,
             columnFilters: true
@@ -81,7 +81,7 @@ $(function(){
         }
     });
     
-    var tableUsers = $('#device-grid,#users').DataTable({
+    var tableUsers = $('#table-users').DataTable({
         listView: true,
         ajax: "data/table.json",
         columns: [

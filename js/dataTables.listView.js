@@ -98,6 +98,7 @@
                     var dataTablesInfoElem = $('.dataTables_info', elem).parent().prop('class', 'col-sm-4');
                     var dataTablesPaginateElem = $('.dataTables_paginate', elem).parent().prop('class', 'col-sm-6');
                     
+                    $('.row:first-child', elem).append('<div class="col-sm-6"><div id="' + dt.table().context[0].sTableId + '_tools" class="dataTables_tools"></div></div>');
                     $('.row:last-child', elem).prepend(dataTablesLengthElem);
                 }
                 
@@ -107,101 +108,66 @@
                     
                     var filterRow = $('thead', elem).append('<tr class="filter-row"></tr>');
                     
-                    dt.table().columns().every(function() {
+                    dt.table().columns().every(function(i) {
                         var column = this;
-                        var columnHead = $('<th \>')
-                        var select = $('<select class="form-control"><option value="">All</option></select>')
-                                        .appendTo(columnHead)
-                                        .on('change', function () {
-                                            var val = $.fn.dataTable.util.escapeRegex(
-                                                $(this).val()
-                                            );
-
-                                            column
-                                                .search(val ? '^' + val + '$' : '', true, false)
-                                                .draw();
-                                        });
+                        var columnHead = $('<th \>');
                         
                         $(columnHead).appendTo(filterRow);
+                        
+                        if($(column.header()).data('filter') !== 'no-filter'){
+                            
+                            if($(column.header()).data('filter') == 'select'){
+                                var select = $('<select class="form-control"><option value="">All</option></select>')
+                                                .appendTo(columnHead)
+                                                .on('change', function() {
+                                                    var val = $.fn.dataTable.util.escapeRegex(
+                                                        $(this).val()
+                                                    );
 
-                        $(column).each(function () {
-                            if ($(column.nodes()).attr('data-search')) {
-                                var titles = [];
-                                column.nodes().unique().sort().each(function (d, j) {
-                                    var title = $(d).attr('data-display');
-                                    if ($.inArray(title, titles) < 0) {
-                                        titles.push(title);
-                                        if (title !== undefined) {
-                                            select.append('<option value="' + title + '">' + title + '</option>')
+                                                    column
+                                                        .search(val ? '^' + val + '$' : '', true, false)
+                                                        .draw();
+                                                });
+                                
+                                if ($(column.nodes()).attr('data-search')) {
+                                    var titles = [];
+                                    column.nodes().unique().sort().each(function (d, j) {
+                                        var title = $(d).attr('data-display');
+                                        if ($.inArray(title, titles) < 0) {
+                                            titles.push(title);
+                                            if (title !== undefined) {
+                                                select.append('<option value="' + title + '">' + title + '</option>');
+                                            }
                                         }
-                                    }
-                                });
-                            } else {
-                                column.data().unique().sort().each(function (d, j) {
-                                    select.append('<option value="' + d + '">' + d + '</option>')
-                                });
+                                    });
+                                } else {
+                                    column.data().unique().sort().each(function (d, j) {
+                                        if(typeof d == 'object'){
+                                            console.warn('"data-search" & "data-display" attributes are required for this column. Please read the documentation for more details');
+                                            return;
+                                        }
+                                        else {
+                                            select.append('<option value="' + d + '">' + d + '</option>');
+                                        }
+                                    });
+                                }
                             }
-                        });
-                    });
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-//                    dt.table().columns().every(function() {
-//
-//                        var column = this;
-//                        var filterColumn = $('.filter-row th', elem);
-//
-//                        //Create & add select/text filters to each column
-//                        if (filterColumn.eq(column.index()).hasClass('select-filter')) {
-//                            var select = $('<select class="form-control"><option value="">All</option></select>')
-//                                .appendTo(filterColumn.eq(column.index()).empty())
-//                                .on('change', function () {
-//                                    var val = $.fn.dataTable.util.escapeRegex(
-//                                        $(this).val()
-//                                    );
-//
-//                                    column
-//                                        .search(val ? '^' + val + '$' : '', true, false)
-//                                        .draw();
-//                                });
-//
-//                            $(column).each(function () {
-//                                if ($(column.nodes()).attr('data-search')) {
-//                                    var titles = [];
-//                                    column.nodes().unique().sort().each(function (d, j) {
-//                                        var title = $(d).attr('data-display');
-//                                        if ($.inArray(title, titles) < 0) {
-//                                            titles.push(title);
-//                                            if (title !== undefined) {
-//                                                select.append('<option value="' + title + '">' + title + '</option>')
-//                                            }
-//                                        }
-//                                    });
-//                                } else {
-//                                    column.data().unique().sort().each(function (d, j) {
-//                                        select.append('<option value="' + d + '">' + d + '</option>')
-//                                    });
-//                                }
-//                            });
-//                        } else if (filterColumn.eq(column.index()).hasClass('text-filter')) {
-//                            var title = filterColumn.eq(column.index()).attr('data-for');
-//                            $(filterColumn.eq(column.index()).empty()).html('<input type="text" class="form-control" placeholder="Search for ' + title + '" />');
-//
-//                            filterColumn.eq(column.index()).find('input').on('keyup change', function () {
-//                                column
-//                                    .search($(this).val())
-//                                    .draw();
-//                            });
-//                        }
-//
-//                    });
-                    
-                    
-                    
+                            else {
+                                var textInput = $('<input type="text" class="form-control" placeholder="Search for ' + $(column.header()).html() + '">')
+                                                    .appendTo(columnHead)
+                                                    .on('keyup change', function() {
+                                                        var val = $.fn.dataTable.util.escapeRegex(
+                                                            $(this).val()
+                                                        );
+                                                        
+                                                        column
+                                                            .search($(this).val())
+                                                            .draw();
+                                                    });
+                            }
+
+                        }
+                    });               
                     
                 }
 
@@ -334,7 +300,7 @@
             listView:{
                 layout: true,
                 gridView: true,
-                columnFilters: false
+                columnFilters: true
             },
 //            bSortCellsTop: true,
 //            responsive: false,
@@ -366,7 +332,8 @@
 
         // Attach a listener to the document which listens for DataTables initialisation
         // events so we can automatically initialise
-        $(document).on('preInit.dt.dte', function(e, settings, json) {            
+        //$(document).on('preInit.dt.dte', function(e, settings, json) {            
+        $(document).on('init.dt', function(e, settings, json) {  
             if (e.namespace !== 'dt') {
                 return;
             }
