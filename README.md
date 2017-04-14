@@ -20,7 +20,9 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('#myTable').DataTable({
     	listView: {
-            gridView: true
+            layout: true,
+            displayGrid: true,
+            columnFilters: false
         }
     });
 });

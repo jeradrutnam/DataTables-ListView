@@ -21,7 +21,8 @@ $(function(){
     
     var tableMembers = $('#table-members').DataTable({
         listView: { 
-            gridView: false,
+            layout: false,
+            displayGrid: true,
             columnFilters: true
         },
         ajax: "data/table.json",

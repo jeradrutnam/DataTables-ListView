@@ -32,14 +32,6 @@
 //            bSortCellsTop: true,
 //            responsive: false,
 //            autoWidth: false,
-//            dom: '<"dataTablesTop"' +
-//                'f' +
-//                '<"dataTables_toolbar">' +
-//                '>' +
-//                'rt' +
-//                '<"dataTablesBottom"' +
-//                'lip' +
-//                '>',
 //            language: {
 //                searchPlaceholder: 'Filter by ...',
 //                search: ''
@@ -79,8 +71,8 @@
             _constructor: function(){
                 
                 this.c.layout = (this.c.layout == undefined) ? this.c.listView.layout : this.c.layout;
-                this.c.gridView = (this.c.gridView == undefined) ? this.c.listView.gridView : this.c.gridView;
                 this.c.columnFilters = (this.c.columnFilters == undefined) ? this.c.listView.columnFilters : this.c.columnFilters;
+                this.c.displayGrid = (this.c.displayGrid == undefined) ? this.c.listView.displayGrid : this.c.displayGrid;
                 
 		        var dt = this.s.dt;
                 var elem = $('table', dt.table().container()).context;
@@ -153,22 +145,29 @@
                                 }
                             }
                             else {
-                                var textInput = $('<input type="text" class="form-control" placeholder="Search for ' + $(column.header()).html() + '">')
-                                                    .appendTo(columnHead)
-                                                    .on('keyup change', function() {
-                                                        var val = $.fn.dataTable.util.escapeRegex(
-                                                            $(this).val()
-                                                        );
-                                                        
-                                                        column
-                                                            .search($(this).val())
-                                                            .draw();
-                                                    });
+                                $('<input type="text" class="form-control" placeholder="Search for ' + $(column.header()).html() + '">')
+                                    .appendTo(columnHead)
+                                    .on('keyup change', function() {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+
+                                        column
+                                            .search($(this).val())
+                                            .draw();
+                                    });
                             }
 
                         }
                     });               
                     
+                }
+                
+                if(this.c.displayGrid){
+                    var toolsContainer = (this.c.layout) ? '.dataTables_tools' : '.dataTables_filter';
+                    
+                    $(toolsContainer, elem).append('<button data-click-event="toggle-list-view" data-view="grid" class="btn btn-default"><i class="fw fw-grid"></i></button>');
+
                 }
 
 //                //Search input default styles override
@@ -188,7 +187,6 @@
 //                    '<ul class="nav nav-pills navbar-right remove-margin" role="tablist">' +
 //                    '<li><button data-click-event="toggle-select" class="btn btn-default btn-primary">Select</li>' +
 //                    '<li class="select-all-btn" style="display:none;"><button data-click-event="toggle-select-all" class="btn btn-default btn-primary">Select All</li>' +
-//                    '<li><button data-click-event="toggle-list-view" data-view="grid" class="btn btn-default"><i class="fw fw-grid"></i></button></li>' +
 //                    '<li><button data-click-event="toggle-list-view" data-view="list" class="btn btn-default"><i class="fw fw-list"></i></button></li>' +
 //                    '<li><button class="btn btn-default" data-toggle="dropdown"><i class="fw fw-sort"></i></button>' + dropdownmenu[0].outerHTML + '</li>' +
 //                    '</ul>'
@@ -299,20 +297,12 @@
         listViewExtend.defaults = {
             listView:{
                 layout: true,
-                gridView: true,
-                columnFilters: true
+                displayGrid: true,
+                columnFilters: false
             },
 //            bSortCellsTop: true,
 //            responsive: false,
 //            autoWidth: false,
-//            dom: '<"dataTablesTop"' +
-//                'f' +
-//                '<"dataTables_toolbar">' +
-//                '>' +
-//                'rt' +
-//                '<"dataTablesBottom"' +
-//                'lip' +
-//                '>',
 //            language: {
 //                searchPlaceholder: 'Filter by ...',
 //                search: ''
