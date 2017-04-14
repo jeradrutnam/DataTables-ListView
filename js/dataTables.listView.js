@@ -73,6 +73,7 @@
                 this.c.layout = (this.c.layout == undefined) ? this.c.listView.layout : this.c.layout;
                 this.c.columnFilters = (this.c.columnFilters == undefined) ? this.c.listView.columnFilters : this.c.columnFilters;
                 this.c.displayGrid = (this.c.displayGrid == undefined) ? this.c.listView.displayGrid : this.c.displayGrid;
+                this.c.grid = (this.c.grid == undefined) ? this.c.listView.grid : this.c.grid;
                 
 		        var dt = this.s.dt;
                 var elem = $('table', dt.table().container()).context;
@@ -165,9 +166,28 @@
                 
                 if(this.c.displayGrid){
                     var toolsContainer = (this.c.layout) ? '.dataTables_tools' : '.dataTables_filter';
+                    var rows = dt.rows().nodes();
+                    var grid = this.c.grid;
                     
-                    $(toolsContainer, elem).append('<button data-click-event="toggle-list-view" data-view="grid" class="btn btn-default"><i class="fw fw-grid"></i></button>');
-
+                    $(toolsContainer, elem)
+                        .append('<button data-click-event="toggle-list-view" data-view="grid" class="btn btn-default"><i class="fw fw-grid"></i></button>' +
+                                '<button data-click-event="toggle-list-view" data-view="list" class="btn btn-default"><i class="fw fw-list"></i></button>');
+                    
+                    //list table list/grid view toggle function
+                    var toggleButton = $('[data-click-event=toggle-list-view]');
+                    toggleButton.click(function () {
+                        if ($(this).attr('data-view') == 'grid') {
+                            $(this).closest('.dataTables_wrapper').find('.dataTable').addClass('grid-view');
+                            rows.each(function () {
+                                $(this).addClass(grid);
+                            });
+                        } else {
+                            $(this).closest('.dataTables_wrapper').find('.dataTable').removeClass('grid-view');
+                            rows.each(function () {
+                                $(this).removeClass(grid);
+                            });
+                        }
+                    });
                 }
 
 //                //Search input default styles override
@@ -187,7 +207,6 @@
 //                    '<ul class="nav nav-pills navbar-right remove-margin" role="tablist">' +
 //                    '<li><button data-click-event="toggle-select" class="btn btn-default btn-primary">Select</li>' +
 //                    '<li class="select-all-btn" style="display:none;"><button data-click-event="toggle-select-all" class="btn btn-default btn-primary">Select All</li>' +
-//                    '<li><button data-click-event="toggle-list-view" data-view="list" class="btn btn-default"><i class="fw fw-list"></i></button></li>' +
 //                    '<li><button class="btn btn-default" data-toggle="dropdown"><i class="fw fw-sort"></i></button>' + dropdownmenu[0].outerHTML + '</li>' +
 //                    '</ul>'
 //                );
@@ -271,20 +290,6 @@
 //                    });
 //                });
 //
-//                //list table list/grid view toggle function
-//                var toggleButton = $('[data-click-event=toggle-list-view]');
-//                toggleButton.click(function () {
-//                    if ($(this).attr('data-view') == 'grid') {
-//                        $(this).closest('.dataTables_wrapper').find('.dataTable').addClass('grid-view');
-//                        //$(this).closest('li').hide();
-//                        //$(this).closest('li').siblings().show();
-//                    } else {
-//                        $(this).closest('.dataTables_wrapper').find('.dataTable').removeClass('grid-view');
-//                        //$(this).closest('li').hide();
-//                        //$(this).closest('li').siblings().show();
-//                    }
-//                });
-//
 //                //delete selected rows
 //                $('[data-click-event=delete-selected-rows]').click(function () {
 //                    var thisTable = $(this).closest('.dataTables_wrapper').find('.dataTable').dataTable();
@@ -297,8 +302,9 @@
         listViewExtend.defaults = {
             listView:{
                 layout: true,
+                columnFilters: false,
                 displayGrid: true,
-                columnFilters: false
+                grid: 'col-xs-12 col-sm-6 col-md-3 col-lg-2'
             },
 //            bSortCellsTop: true,
 //            responsive: false,

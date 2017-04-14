@@ -27,3 +27,66 @@
 .dataTable-listView.datatables-listview-layout .dataTables_tools { text-align: right; }
 .dataTable-listView.datatables-listview-layout .dataTables_length { padding-top: 5px; }
 .dataTable-listView.datatables-listview-layout .dataTables_info { padding-top: 9px; }
+
+
+
+.dataTable-listView table.dataTable.grid-view,
+.dataTable-listView table.dataTable.grid-view > tbody,
+.dataTable-listView table.dataTable.grid-view > tbody > tr,
+.dataTable-listView table.dataTable.grid-view > tbody > tr > td{ 
+    display: block;
+}
+
+
+/*
+.dataTable-listView table.dataTable { min-width: 100%; display: block; }
+.dataTable-listView table.dataTable > thead, .dataTable-listView table.dataTable > tbody, .dataTable-listView table.dataTable > tfoot { display: block; }
+.dataTable-listView table.dataTable thead, .dataTable-listView table.dataTable tbody { vertical-align: top; }
+.dataTable-listView table.dataTable > tbody > tr > td, .dataTable-listView table.dataTable > tbody > tr > th, .dataTable-listView table.dataTable > tfoot > tr > td, .dataTable-listView table.dataTable > tfoot > tr > th, .dataTable-listView table.dataTable > thead > tr > td, .dataTable-listView table.dataTable > thead > tr > th { border: none; padding: 8px; vertical-align: middle; overflow: hidden; position: relative; }
+.dataTable-listView table.dataTable .h1, .dataTable-listView table.dataTable .h2, .dataTable-listView table.dataTable .h3, .dataTable-listView table.dataTable .h4, .dataTable-listView table.dataTable .h5, .dataTable-listView table.dataTable .h6, .dataTable-listView table.dataTable h1, .dataTable-listView table.dataTable h2, .dataTable-listView table.dataTable h3, .dataTable-listView table.dataTable h4, .dataTable-listView table.dataTable h5, .dataTable-listView table.dataTable h6 { margin: 0; }
+.dataTable-listView table.dataTable tr { border-bottom: 5px solid transparent; }
+.dataTable-listView table.dataTable > thead > tr.sort-row { display: none; }
+.dataTable-listView table.dataTable > thead > tr.bulk-action-row { display: block; margin: 0 15px; }
+.dataTable-listView table.dataTable > thead > tr.bulk-action-row > th, .dataTable-listView table.dataTable > thead > tr.bulk-action-row > td { display: block !important; }
+.dataTable-listView table.dataTable > thead > tr.bulk-action-row > th > div, .dataTable-listView table.dataTable > thead > tr.bulk-action-row > td > div, .dataTable-listView table.dataTable > thead > tr.bulk-action-row > th > span, .dataTable-listView table.dataTable > thead > tr.bulk-action-row > td > span, .dataTable-listView table.dataTable > thead > tr.bulk-action-row > th > ul, .dataTable-listView table.dataTable > thead > tr.bulk-action-row > td > ul { margin: 0 -10px; }
+.dataTable-listView table.dataTable > thead.block > tr > td:not(:empty):before, .dataTable-listView table.dataTable > thead.block > tr > th:not(:empty):before { content: attr(data-for); }
+.dataTable-listView table.dataTable > tbody > tr:nth-of-type(odd), .dataTable-listView table.dataTable > tbody > tr:nth-of-type(even) { background-color: transparent; }
+.dataTable-listView table.dataTable > tbody > tr.child ul { text-align: left; display: block; }
+.dataTable-listView table.dataTable.grid-view > tbody > tr { padding: 15px 15px 0; }
+.dataTable-listView table.dataTable.grid-view > tbody > tr > td[data-grid-label]:before, .dataTable-listView table.dataTable.grid-view > tbody > tr > th[data-grid-label]:before { content: attr(data-grid-label):; font-weight: 600; margin-right: 8px; }
+.dataTable-listView table.dataTable.grid-view > tbody > tr.header-row { display: none; }
+.dataTable-listView table.dataTable.grid-view > tbody > tr td, .dataTable-listView table.dataTable.grid-view > tbody > tr th { display: block; white-space: nowrap; padding: 10px 0; }
+.dataTable-listView table.dataTable.grid-view > thead > tr { width: auto; }
+.dataTable-listView table.dataTable.grid-view > thead > tr > td, .dataTable-listView table.dataTable.grid-view > thead > tr > th { display: inline-block; }
+.dataTable-listView table.dataTable.grid-view > thead > tr > td:not(:empty):before, .dataTable-listView table.dataTable.grid-view > thead > tr > th:not(:empty):before { content: attr(data-for); }
+.dataTable-listView table.dataTable.grid-view > tfoot > tr > td, .dataTable-listView table.dataTable.grid-view > tfoot > tr th { display: block; white-space: nowrap; padding: 10px 0; }
+.dataTable-listView table.dataTable.grid-view .hidden-on-grid-view { display: none; }
+.dataTable-listView table.dataTable.grid-view .padding-reduce-on-grid-view { padding: 2px; }
+.dataTable-listView table.dataTable.grid-view .text-left-on-grid-view { text-align: left; }
+.dataTable-listView table.dataTable.grid-view .text-right-on-grid-view { text-align: right; }
+.dataTable-listView table.dataTable.grid-view .text-center-on-grid-view { text-align: center; }
+.dataTable-listView table.dataTable.grid-view tr { display: inline-block; }
+.dataTable-listView table.dataTable.grid-view tr td { padding: 0; }
+.dataTable-listView table.dataTable.grid-view .filter-row, .dataTable-listView table.dataTable thead.block .filter-row { background: #e4e4e4; margin: 0 15px; padding: 15px; display: block; }
+.dataTable-listView table.dataTable.grid-view .filter-row th:empty, .dataTable-listView table.dataTable thead.block .filter-row th:empty { display: none; }
+.dataTable-listView table.dataTable:not(.grid-view) .content-fill { width: 1%; }
+.dataTable-listView table.dataTable:not(.grid-view) > tbody > tr > td, .dataTable-listView table.dataTable:not(.grid-view) > tbody > tr > th { background: #f5f5f5; }
+.dataTable-listView table.dataTable:not(.grid-view) > tbody > tr > td.fade-edge:after, .dataTable-listView table.dataTable:not(.grid-view) > tbody > tr > th.fade-edge:after { display: none; }
+.dataTable-listView table.dataTable:not(.grid-view) tbody { margin: 0 15px; }
+.dataTable-listView table.dataTable:not(.grid-view) .thumbnail { max-width: 60px; min-width: 60px; }
+.table.table-hover > tbody > tr:hover td:not(.dataTables_empty) { background: #e4e4e4 !important; }
+.table.table-hover > tbody > tr:hover td:not(.dataTables_empty).fade-edge:after { content: ""; background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, fade(#e4e4e4, 0%)), color-stop(100%, fade(#e4e4e4, 100%))); background-image: -webkit-linear-gradient(left, fade(#e4e4e4, 0%), fade(#e4e4e4, 100%)); background: linear-gradient(to right, fade(#e4e4e4, 0%), fade(#e4e4e4, 100%)); filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, StartColorStr='#00$color', EndColorStr='$color'); bottom: 0; max-height: 100%; position: absolute; right: 0; height: 10000px; width: 60px; }
+.table.table-selectable > tbody > tr:hover { cursor: pointer; }
+.table.table-selectable > tbody > tr:hover td:not(.dataTables_empty):first-child:before, .table.table-selectable > tbody > tr.DTTT_selected td:not(.dataTables_empty):first-child:before { position: absolute; display: block; content: ""; background-color: transparent; border-left: 2px solid #fff; border-bottom: 2px solid #fff; height: .65rem; width: 1.3rem; z-index: 102; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); right: 0.3rem; left: auto; top: 0.3rem; }
+.table.table-selectable > tbody > tr:hover td:not(.dataTables_empty):first-child:after, .table.table-selectable > tbody > tr.DTTT_selected td:not(.dataTables_empty):first-child:after, .table.table-selectable > tbody > tr[data-type=selectable] td:not(.dataTables_empty):first-child:after { position: absolute; display: block; border-top: 32px solid #007d85; border-left: 32px solid transparent; right: 0; content: ""; top: 0; z-index: 101; }
+.table.table-selectable > tbody > tr[data-type=selectable]:not(:hover):not(.DTTT_selected) td:not(.dataTables_empty):first-child:after { border-top-color: #e4e4e4; }
+.table.table-selectable.grid-view > tbody > tr.DTTT_selected td:not(.dataTables_empty):first-child { border: 5px solid #007d85; }
+.table.table-selectable:not(.grid-view) > tbody > tr.DTTT_selected td:not(.dataTables_empty) { background: #2C313B !important; color: #fff; }
+
+@media (max-width: 767px) { .dataTable-listView table.dataTable > thead > tr.filter-row, .dataTable-listView table.dataTable > thead > tr.filter-row td, .dataTable-listView table.dataTable > thead > tr.filter-row th { display: block; } }
+@media (min-width: 320px) and (max-width: 479px) { .dataTable-listView table.dataTable.grid-view tr { width: 100%; } }
+@media (min-width: 480px) and (max-width: 767px) { .dataTable-listView table.dataTable.grid-view tr { width: 50%; }
+  .dataTable-listView table.dataTable:not(.grid-view) .content-fill { width: auto; } }
+@media (min-width: 768px) and (max-width: 991px) { .dataTable-listView table.dataTable.grid-view tr { width: 33.3%; } }
+@media (min-width: 992px) and (max-width: 1199px) { .dataTable-listView table.dataTable.grid-view tr { width: 20%; } }
+@media (min-width: 1200px) { .dataTable-listView table.dataTable.grid-view tr { width: 10%; } }*/

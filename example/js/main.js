@@ -20,8 +20,7 @@ $(function(){
     });
     
     var tableMembers = $('#table-members').DataTable({
-        listView: { 
-            layout: false,
+        listView: {
             displayGrid: true,
             columnFilters: true
         },
