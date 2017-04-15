@@ -22,20 +22,31 @@
  ~   For details please refer to: http://www.datatables.net
 */
 
-.dataTable-listView.datatables-listview-layout table.dataTable { min-width: 100% !important; }
+.dataTable-listView.datatables-listview-layout table.dataTable { width: 100% !important; }
+
 .dataTable-listView.datatables-listview-layout .dataTables_filter { text-align: left; }
 .dataTable-listView.datatables-listview-layout .dataTables_tools { text-align: right; }
 .dataTable-listView.datatables-listview-layout .dataTables_length { padding-top: 5px; }
 .dataTable-listView.datatables-listview-layout .dataTables_info { padding-top: 9px; }
 
-
-
 .dataTable-listView table.dataTable.grid-view,
 .dataTable-listView table.dataTable.grid-view > tbody,
 .dataTable-listView table.dataTable.grid-view > tbody > tr,
-.dataTable-listView table.dataTable.grid-view > tbody > tr > td{ 
+.dataTable-listView table.dataTable.grid-view > tbody > tr > td { 
     display: block;
 }
+
+.dataTable-listView table.dataTable.grid-view > tbody > tr { margin-bottom: 30px; }
+
+.dataTable-listView table.dataTable.grid-view > tbody > tr > td { 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dataTable-listView.datatables-listview-layout table.dataTable > tbody > tr > td { padding: 0; }
+
+
 
 
 /*

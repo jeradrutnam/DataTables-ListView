@@ -16,6 +16,26 @@
     <link href="libs/DataTables-1.10.13/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="libs/DataTables-1.10.13/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="../css/dataTables.listView.css" rel="stylesheet">
+      
+    <style>
+        .thumbnail,
+        .btn,
+        .form-control,
+        .navbar,
+        .pagination > li > a,
+        .pagination > li > span {
+            border-radius: 0 !important;
+        }
+        
+        .navbar {
+            margin-bottom: 0;
+        }
+        
+        .table .btn {
+            border: none;
+            background: transparent;
+        }
+    </style>
   </head>
 
   <body>
@@ -41,6 +61,7 @@
         
         <div class="container">
             <h2>Without ListView Plugin</h2>
+            <br>
             <table id="table-default" class="table table-striped table-hover table-bordered display" cellspacing="0">
                 <thead>
                     <tr>
@@ -64,6 +85,7 @@
         
         <div class="container">
             <h2>Using ListView Plugin</h2>
+            <br>
             <table class="table table-responsive table-striped display" id="table-members">
                 <thead>
                     <tr>
@@ -81,6 +103,7 @@
         
         <div class="container">
             <h2>ListView Plugin with advance configurations</h2>
+            <br>
             <table class="table table-striped table-hover table-responsive display" id="table-users">
                 <thead class="block">
                 <tr class="sort-row">

@@ -50,25 +50,13 @@ $(function(){
                 "targets": 3,
                 "render": function (data, type, full, meta) {
                   return   '<a href="#" class="btn btn-default">'+
-                                '<span class="fw-stack">'+
-                                    '<i class="fw fw-circle-outline fw-stack-2x"></i>'+
-                                    '<i class="fw fw-view fw-stack-1x"></i>'+
-                                '</span>'+
-                                '<span class="hidden-xs">View</span>'+
+                                '<i class="fw fw-view fw-lg fw-helper fw-helper-circle-outline"></i> View'+
                             '</a>'+
                             '<a href="#" class="btn btn-default">'+
-                                '<span class="fw-stack">'+
-                                    '<i class="fw fw-circle-outline fw-stack-2x"></i>'+
-                                    '<i class="fw fw-edit fw-stack-1x"></i>'+
-                                '</span>'+
-                                '<span class="hidden-xs">Edit</span>'+
+                                '<i class="fw fw-edit fw-lg fw-helper fw-helper-circle-outline"></i> Edit'+
                             '</a>'+
                             '<a href="#" data-click-event="remove-form" class="btn btn-default">'+
-                                '<span class="fw-stack">'+
-                                    '<i class="fw fw-circle-outline fw-stack-2x"></i>'+
-                                    '<i class="fw fw-delete fw-stack-1x"></i>'+
-                                '</span>'+
-                                '<span class="hidden-xs">Delete</span>'+
+                                '<i class="fw fw-delete fw-lg fw-helper fw-helper-circle-outline"></i> Delete'+
                             '</a>';
                 }
             }
@@ -114,25 +102,13 @@ $(function(){
                 "targets": 7,
                 "render": function (data, type, full, meta) {
                   return   '<a href="#" class="btn btn-default">'+
-                                '<span class="fw-stack">'+
-                                    '<i class="fw fw-circle-outline fw-stack-2x"></i>'+
-                                    '<i class="fw fw-view fw-stack-1x"></i>'+
-                                '</span>'+
-                                '<span class="hidden-xs">View</span>'+
+                                '<i class="fw fw-view fw-lg fw-helper fw-helper-circle-outline"></i> View'+
                             '</a>'+
                             '<a href="#" class="btn btn-default">'+
-                                '<span class="fw-stack">'+
-                                    '<i class="fw fw-circle-outline fw-stack-2x"></i>'+
-                                    '<i class="fw fw-edit fw-stack-1x"></i>'+
-                                '</span>'+
-                                '<span class="hidden-xs">Edit</span>'+
+                                '<i class="fw fw-edit fw-lg fw-helper fw-helper-circle-outline"></i> Edit'+
                             '</a>'+
                             '<a href="#" data-click-event="remove-form" class="btn btn-default">'+
-                                '<span class="fw-stack">'+
-                                    '<i class="fw fw-circle-outline fw-stack-2x"></i>'+
-                                    '<i class="fw fw-delete fw-stack-1x"></i>'+
-                                '</span>'+
-                                '<span class="hidden-xs">Delete</span>'+
+                                '<i class="fw fw-delete fw-lg fw-helper fw-helper-circle-outline"></i> Delete'+
                             '</a>';
                 }
             }

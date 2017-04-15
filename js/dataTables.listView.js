@@ -68,6 +68,7 @@
         
         listViewExtend.prototype = {
             
+            
             _constructor: function(){
                 
                 this.c.layout = (this.c.layout == undefined) ? this.c.listView.layout : this.c.layout;
@@ -169,25 +170,30 @@
                     var rows = dt.rows().nodes();
                     var grid = this.c.grid;
                     
-                    $(toolsContainer, elem)
-                        .append('<button data-click-event="toggle-list-view" data-view="grid" class="btn btn-default"><i class="fw fw-grid"></i></button>' +
-                                '<button data-click-event="toggle-list-view" data-view="list" class="btn btn-default"><i class="fw fw-list"></i></button>');
+                    dt.table().page.len(12).draw();
                     
-                    //list table list/grid view toggle function
-                    var toggleButton = $('[data-click-event=toggle-list-view]');
-                    toggleButton.click(function () {
-                        if ($(this).attr('data-view') == 'grid') {
-                            $(this).closest('.dataTables_wrapper').find('.dataTable').addClass('grid-view');
-                            rows.each(function () {
-                                $(this).addClass(grid);
-                            });
-                        } else {
-                            $(this).closest('.dataTables_wrapper').find('.dataTable').removeClass('grid-view');
-                            rows.each(function () {
-                                $(this).removeClass(grid);
-                            });
-                        }
-                    });
+                    $('.dataTables_length', dt.containers()[0]).find('select').html('<option value="12">12</option>' +
+                            '<option value="24">24</option>'+
+                            '<option value="48">48</option>' +
+                            '<option value="96">96</option>');
+                    
+                    var btnGridView = $('<button class="btn btn-default"><i class="fw fw-grid"></i></button>')
+                                            .appendTo($(toolsContainer, elem))
+                                            .on('click', function() {
+                                                $(dt.table().node()).addClass('grid-view');
+                                                rows.each(function () {
+                                                    $(this).addClass(grid);
+                                                });
+                                            });
+                    
+                    var btnListView = $('<button class="btn btn-default"><i class="fw fw-list"></i></button>')
+                                            .appendTo($(toolsContainer, elem))
+                                            .on('click', function() {
+                                                $(dt.table().node()).removeClass('grid-view');
+                                                rows.each(function () {
+                                                    $(this).removeClass(grid);
+                                                });
+                                            });
                 }
 
 //                //Search input default styles override
