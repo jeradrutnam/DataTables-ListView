@@ -29,12 +29,19 @@
 .dataTable-listView.datatables-listview-layout .dataTables_length { padding-top: 5px; }
 .dataTable-listView.datatables-listview-layout .dataTables_info { padding-top: 9px; }
 
+.dataTable-listView.datatables-listview-layout table.dataTable > thead tr > th,
+.dataTable-listView.datatables-listview-layout table.dataTable > tbody > tr > td { 
+    padding: 0;
+}
+
 .dataTable-listView table.dataTable.grid-view,
 .dataTable-listView table.dataTable.grid-view > tbody,
 .dataTable-listView table.dataTable.grid-view > tbody > tr,
 .dataTable-listView table.dataTable.grid-view > tbody > tr > td { 
     display: block;
 }
+
+.dataTable-listView table.dataTable.grid-view > thead { display: none; }
 
 .dataTable-listView table.dataTable.grid-view > tbody > tr { margin-bottom: 30px; }
 
@@ -44,9 +51,12 @@
     text-overflow: ellipsis;
 }
 
-.dataTable-listView.datatables-listview-layout table.dataTable > tbody > tr > td { padding: 0; }
-
-
+.dataTable-listView table.dataTable.grid-view > tbody > tr > td.select-checkbox {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    border-top: none;
+}
 
 
 /*

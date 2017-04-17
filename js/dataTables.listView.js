@@ -73,6 +73,7 @@
                 
                 this.c.layout = (this.c.layout == undefined) ? this.c.listView.layout : this.c.layout;
                 this.c.columnFilters = (this.c.columnFilters == undefined) ? this.c.listView.columnFilters : this.c.columnFilters;
+                this.c.multiSelect = (this.c.multiSelect == undefined) ? this.c.listView.multiSelect : this.c.multiSelect;
                 this.c.displayGrid = (this.c.displayGrid == undefined) ? this.c.listView.displayGrid : this.c.displayGrid;
                 this.c.grid = (this.c.grid == undefined) ? this.c.listView.grid : this.c.grid;
                 
@@ -195,6 +196,46 @@
                                                 });
                                             });
                 }
+                
+                if(this.c.multiSelect){
+                    
+                    $('<input type="checkbox">')
+                            .on('change', function(e) {
+                                if(this.checked) {
+                                    dt.table().rows().every(function(i) {
+                                        $(this.node()).addClass(ROW_SELECTED_CLASS);
+                                        $('td.select-checkbox input[type=checkbox]', this.node()).prop('checked', true);
+                                    });
+                                }
+                                else{
+                                    dt.table().rows().every(function(i) {
+                                        $(this.node()).removeClass(ROW_SELECTED_CLASS);
+                                        $('td.select-checkbox input[type=checkbox]', this.node()).prop('checked', false);
+                                    });
+                                }
+
+                            })
+                            .prependTo($('tr:first-child', dt.table().header()))
+                            .wrap('<th class="selectall-checkox"></th>');
+                    
+                    $('tr.filter-row', dt.table().header()).prepend('<th></th>');
+                    
+                    dt.table().rows().every(function(i) {
+                        $('<input type="checkbox">')
+                            .on('change', function(e) {
+                                if(this.checked) {
+                                    $(e.target).closest('tr').addClass(ROW_SELECTED_CLASS);
+                                }
+                                else{
+                                    $(e.target).closest('tr').removeClass(ROW_SELECTED_CLASS);
+                                }
+
+                            })
+                            .prependTo(this.node())
+                            .wrap('<td class="select-checkbox"></td>');
+                    });
+                    
+                }
 
 //                //Search input default styles override
 //                var search_input = elem.closest('.dataTables_wrapper').find('div[id$=_filter] input');
@@ -309,6 +350,7 @@
             listView:{
                 layout: true,
                 columnFilters: false,
+                multiSelect: false,
                 displayGrid: true,
                 grid: 'col-xs-12 col-sm-6 col-md-3 col-lg-2'
             },
