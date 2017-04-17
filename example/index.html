@@ -40,8 +40,50 @@
             padding: 4px;
         }
         
+        .table.grid-view .btn > span {
+            display: none;
+        }
+        
         .table h4 {
             margin: 0;
+        }
+        
+        .thumbnail.icon {
+            border: none;
+            margin: 0;
+            background: #37474F;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            font-size: 30px;
+            min-width: 40px;
+        }
+        
+        .thumbnail.icon:before {
+            display: block;
+            content: "";
+            width: 100%;
+            padding-top: 100%;
+        }
+        
+        .thumbnail.icon > .square-element {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .thumbnail.icon > .square-element:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
         }
     </style>
   </head>

@@ -34,7 +34,7 @@
     padding: 0;
 }
 
-.dataTable-listView.datatables-listview-layout table.dataTable > thead tr > th.select-all-checkox { width: 1px; }
+.dataTable-listView.datatables-listview-layout table.dataTable > thead tr > th.select-all-checkox { width: 1%; }
 
 .dataTable-listView table.dataTable.grid-view,
 .dataTable-listView table.dataTable.grid-view > tbody,
@@ -58,6 +58,7 @@
     right: 20px;
     top: 5px;
     border-top: none;
+    z-index: 1;
 }
 
 

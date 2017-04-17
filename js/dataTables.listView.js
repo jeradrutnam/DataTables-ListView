@@ -73,9 +73,10 @@
                 
                 this.c.layout = (this.c.layout == undefined) ? this.c.listView.layout : this.c.layout;
                 this.c.columnFilters = (this.c.columnFilters == undefined) ? this.c.listView.columnFilters : this.c.columnFilters;
-                this.c.multiSelect = (this.c.multiSelect == undefined) ? this.c.listView.multiSelect : this.c.multiSelect;
-                this.c.displayGrid = (this.c.displayGrid == undefined) ? this.c.listView.displayGrid : this.c.displayGrid;
+                this.c.checkbox = (this.c.checkbox == undefined) ? this.c.listView.checkbox : this.c.checkbox;
+                this.c.checkboxTemplate = (this.c.checkboxTemplate == undefined) ? this.c.listView.checkboxTemplate : this.c.checkboxTemplate;
                 this.c.grid = (this.c.grid == undefined) ? this.c.listView.grid : this.c.grid;
+                this.c.gridTemplate = (this.c.gridTemplate == undefined) ? this.c.listView.gridTemplate : this.c.gridTemplate;
                 
 		        var dt = this.s.dt;
                 var elem = $('table', dt.table().container()).context;
@@ -97,10 +98,10 @@
                     $('.row:last-child', elem).prepend(dataTablesLengthElem);
                 }
                 
-                if(this.c.displayGrid){
+                if(this.c.grid){
                     var toolsContainer = (this.c.layout) ? '.dataTables_tools' : '.dataTables_filter';
                     var rows = dt.rows().nodes();
-                    var grid = this.c.grid;
+                    var grid = this.c.gridTemplate;
                     
                     dt.table().page.len(12).draw();
                     
@@ -199,7 +200,7 @@
                     
                 }
                 
-                if(this.c.multiSelect){
+                if(this.c.checkbox){
                     
                     var filterRow = $('tr.filter-row', dt.table().header());
                     
@@ -207,7 +208,7 @@
                        filterRow.prepend('<th></th>');
                     }
                     
-                    $('<input type="checkbox">')
+                    $(checkboxTemplate)
                             .on('change', function(e) {
                                 if(this.checked) {
                                     dt.table().rows().every(function(i) {
@@ -227,7 +228,7 @@
                             .wrap('<th class="select-all-checkox"></th>');
                     
                     dt.table().rows().every(function(i) {
-                        $('<input type="checkbox">')
+                        $(checkboxTemplate)
                             .on('change', function(e) {
                                 if(this.checked) {
                                     $(e.target).closest('tr').addClass(ROW_SELECTED_CLASS);
@@ -357,9 +358,10 @@
             listView:{
                 layout: true,
                 columnFilters: false,
-                multiSelect: false,
-                displayGrid: true,
-                grid: 'col-xs-12 col-sm-6 col-md-3 col-lg-2'
+                checkbox: false,
+                checkboxTemplate: '<input type="checkbox">',
+                grid: true,
+                gridTemplate: 'col-xs-12 col-sm-6 col-md-3 col-lg-2'
             },
 //            bSortCellsTop: true,
 //            responsive: false,

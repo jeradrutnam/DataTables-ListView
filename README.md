@@ -21,8 +21,11 @@ $(document).ready(function(){
     $('#myTable').DataTable({
     	listView: {
             layout: true,
-            displayGrid: true,
-            columnFilters: false
+            columnFilters: false,
+            checkbox: false,
+            checkboxTemplate: '<input type="checkbox">',
+            grid: true,
+            gridTemplate: 'col-xs-12 col-sm-6 col-md-3 col-lg-2'
         }
     });
 });

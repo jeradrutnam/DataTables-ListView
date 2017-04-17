@@ -21,9 +21,9 @@ $(function(){
     
     var tableMembers = $('#table-members').DataTable({
         listView: {
-            displayGrid: false,
+            grid: false,
             columnFilters: true,
-            multiSelect: true,
+            checkbox: true,
         },
         ajax: "data/table.json",
         columns: [
@@ -51,13 +51,13 @@ $(function(){
                 "targets": 3,
                 "render": function (data, type, full, meta) {
                   return   '<a href="#" class="btn btn-default">'+
-                                '<i class="fw fw-view fw-helper fw-helper-circle-outline"></i> View'+
+                                '<i class="fw fw-view fw-helper fw-helper-circle-outline"></i> <span>View</span>'+
                             '</a>'+
                             '<a href="#" class="btn btn-default">'+
-                                '<i class="fw fw-edit fw-helper fw-helper-circle-outline"></i> Edit'+
+                                '<i class="fw fw-edit fw-helper fw-helper-circle-outline"></i> <span>Edit</span>'+
                             '</a>'+
                             '<a href="#" data-click-event="remove-form" class="btn btn-default">'+
-                                '<i class="fw fw-delete fw-helper fw-helper-circle-outline"></i> Delete'+
+                                '<i class="fw fw-delete fw-helper fw-helper-circle-outline"></i> <span>Delete</span>'+
                             '</a>';
                 }
             }
@@ -103,13 +103,13 @@ $(function(){
                 "targets": 7,
                 "render": function (data, type, full, meta) {
                   return   '<a href="#" class="btn btn-default">'+
-                                '<i class="fw fw-view fw-helper fw-helper-circle-outline"></i> View'+
+                                '<i class="fw fw-view fw-helper fw-helper-circle-outline"></i> <span>View</span>'+
                             '</a>'+
                             '<a href="#" class="btn btn-default">'+
-                                '<i class="fw fw-edit fw-helper fw-helper-circle-outline"></i> Edit'+
+                                '<i class="fw fw-edit fw-helper fw-helper-circle-outline"></i> <span>Edit</span>'+
                             '</a>'+
                             '<a href="#" data-click-event="remove-form" class="btn btn-default">'+
-                                '<i class="fw fw-delete fw-helper fw-helper-circle-outline"></i> Delete'+
+                                '<i class="fw fw-delete fw-helper fw-helper-circle-outline"></i> <span>Delete</span>'+
                             '</a>';
                 }
             }
