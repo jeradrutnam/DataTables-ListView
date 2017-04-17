@@ -97,75 +97,6 @@
                     $('.row:last-child', elem).prepend(dataTablesLengthElem);
                 }
                 
-                if(this.c.columnFilters){
-                    
-                    //$('thead', elem).append('<tr class="filter-row"><th colspan="' + dt.table().columns()[0].length + '"></th></tr>');
-                    
-                    var filterRow = $('thead', elem).append('<tr class="filter-row"></tr>');
-                    
-                    dt.table().columns().every(function(i) {
-                        var column = this;
-                        var columnHead = $('<th \>');
-                        
-                        $(columnHead).appendTo(filterRow);
-                        
-                        if($(column.header()).data('filter') !== 'no-filter'){
-                            
-                            if($(column.header()).data('filter') == 'select'){
-                                var select = $('<select class="form-control"><option value="">All</option></select>')
-                                                .appendTo(columnHead)
-                                                .on('change', function() {
-                                                    var val = $.fn.dataTable.util.escapeRegex(
-                                                        $(this).val()
-                                                    );
-
-                                                    column
-                                                        .search(val ? '^' + val + '$' : '', true, false)
-                                                        .draw();
-                                                });
-                                
-                                if ($(column.nodes()).attr('data-search')) {
-                                    var titles = [];
-                                    column.nodes().unique().sort().each(function (d, j) {
-                                        var title = $(d).attr('data-display');
-                                        if ($.inArray(title, titles) < 0) {
-                                            titles.push(title);
-                                            if (title !== undefined) {
-                                                select.append('<option value="' + title + '">' + title + '</option>');
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    column.data().unique().sort().each(function (d, j) {
-                                        if(typeof d == 'object'){
-                                            console.warn('"data-search" & "data-display" attributes are required for this column. Please read the documentation for more details');
-                                            return;
-                                        }
-                                        else {
-                                            select.append('<option value="' + d + '">' + d + '</option>');
-                                        }
-                                    });
-                                }
-                            }
-                            else {
-                                $('<input type="text" class="form-control" placeholder="Search for ' + $(column.header()).html() + '">')
-                                    .appendTo(columnHead)
-                                    .on('keyup change', function() {
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                            $(this).val()
-                                        );
-
-                                        column
-                                            .search($(this).val())
-                                            .draw();
-                                    });
-                            }
-
-                        }
-                    });               
-                    
-                }
-                
                 if(this.c.displayGrid){
                     var toolsContainer = (this.c.layout) ? '.dataTables_tools' : '.dataTables_filter';
                     var rows = dt.rows().nodes();
@@ -197,7 +128,84 @@
                                             });
                 }
                 
+                if(this.c.columnFilters){
+                    
+                    //$('thead', elem).append('<tr class="filter-row"><th colspan="' + dt.table().columns()[0].length + '"></th></tr>');
+                    
+                    var filterRow = $('<tr class="filter-row"></tr>').appendTo($('thead', elem));
+                    
+                    dt.table().columns().every(function(i) {
+                        var column = this;
+                        
+                        if( ($(column.header()).data('filter')) && ($(column.header()).data('filter') !== 'no-filter') ){
+                            
+                            if($(column.header()).data('filter') == 'select'){
+                                var select = $('<select class="form-control"><option value="">All</option></select>')
+                                                .on('change', function() {
+                                                    var val = $.fn.dataTable.util.escapeRegex(
+                                                        $(this).val()
+                                                    );
+
+                                                    column
+                                                        .search(val ? '^' + val + '$' : '', true, false)
+                                                        .draw();
+                                                })
+                                                .appendTo(filterRow)
+                                                .wrap('<th></th>');
+                                
+                                if ($(column.nodes()).attr('data-search')) {
+                                    var titles = [];
+                                    column.nodes().unique().sort().each(function (d, j) {
+                                        var title = $(d).attr('data-display');
+                                        if ($.inArray(title, titles) < 0) {
+                                            titles.push(title);
+                                            if (title !== undefined) {
+                                                select.append('<option value="' + title + '">' + title + '</option>');
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    column.data().unique().sort().each(function (d, j) {
+                                        if(typeof d == 'object'){
+                                            console.warn('"data-search" & "data-display" attributes are required for this column. Please read the documentation for more details');
+                                            return;
+                                        }
+                                        else {
+                                            select.append('<option value="' + d + '">' + d + '</option>');
+                                        }
+                                    });
+                                }
+                            }
+                            else {
+                                $('<input type="text" class="form-control" placeholder="Search for ' + $(column.header()).html() + '">')
+                                    .on('keyup change', function() {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+
+                                        column
+                                            .search($(this).val())
+                                            .draw();
+                                    })
+                                    .appendTo(filterRow)
+                                    .wrap('<th></th>');
+                            }
+
+                        }
+                        else {
+                            $('<th></th>').appendTo(filterRow);
+                        }
+                    });               
+                    
+                }
+                
                 if(this.c.multiSelect){
+                    
+                    var filterRow = $('tr.filter-row', dt.table().header());
+                    
+                    if(filterRow){
+                       filterRow.prepend('<th></th>');
+                    }
                     
                     $('<input type="checkbox">')
                             .on('change', function(e) {
@@ -216,9 +224,7 @@
 
                             })
                             .prependTo($('tr:first-child', dt.table().header()))
-                            .wrap('<th class="selectall-checkox"></th>');
-                    
-                    $('tr.filter-row', dt.table().header()).prepend('<th></th>');
+                            .wrap('<th class="select-all-checkox"></th>');
                     
                     dt.table().rows().every(function(i) {
                         $('<input type="checkbox">')
@@ -236,6 +242,7 @@
                     });
                     
                 }
+                
 
 //                //Search input default styles override
 //                var search_input = elem.closest('.dataTables_wrapper').find('div[id$=_filter] input');
