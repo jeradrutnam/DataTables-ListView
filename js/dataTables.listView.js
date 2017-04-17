@@ -101,7 +101,7 @@
                 if(this.c.grid){
                     var toolsContainer = (this.c.layout) ? '.dataTables_tools' : '.dataTables_filter';
                     var rows = dt.rows().nodes();
-                    var grid = this.c.gridTemplate;
+                    var gridTemplate = this.c.gridTemplate;
                     
                     dt.table().page.len(12).draw();
                     
@@ -115,7 +115,7 @@
                                             .on('click', function() {
                                                 $(dt.table().node()).addClass('grid-view');
                                                 rows.each(function () {
-                                                    $(this).addClass(grid);
+                                                    $(this).addClass(gridTemplate);
                                                 });
                                             });
                     
@@ -124,7 +124,7 @@
                                             .on('click', function() {
                                                 $(dt.table().node()).removeClass('grid-view');
                                                 rows.each(function () {
-                                                    $(this).removeClass(grid);
+                                                    $(this).removeClass(gridTemplate);
                                                 });
                                             });
                 }
@@ -203,6 +203,7 @@
                 if(this.c.checkbox){
                     
                     var filterRow = $('tr.filter-row', dt.table().header());
+                    var checkboxTemplate = this.c.checkboxTemplate;
                     
                     if(filterRow){
                        filterRow.prepend('<th></th>');
