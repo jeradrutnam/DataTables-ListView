@@ -29,9 +29,14 @@
 .dataTable-listView.datatables-listview-layout .dataTables_length { padding-top: 5px; }
 .dataTable-listView.datatables-listview-layout .dataTables_info { padding-top: 9px; }
 
-.dataTable-listView.datatables-listview-layout table.dataTable > thead tr > th,
-.dataTable-listView.datatables-listview-layout table.dataTable > tbody > tr > td { 
-    padding: 0;
+.dataTable-listView.datatables-listview-layout table.dataTable > tbody > tr > td,
+.dataTable-listView.datatables-listview-layout table.dataTable > tfoot > tr > td,
+.dataTable-listView.datatables-listview-layout table.dataTable > tfoot > tr > th,
+.dataTable-listView.datatables-listview-layout table.dataTable > thead > tr > th {
+    padding: 8px;
+    vertical-align: middle;
+    overflow: hidden;
+    position: relative;
 }
 
 .dataTable-listView.datatables-listview-layout table.dataTable > thead tr > th.select-all-checkox { width: 1%; }
