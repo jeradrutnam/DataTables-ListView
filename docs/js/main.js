@@ -49,6 +49,7 @@ $(function(){
             },
             {
                 "targets": 3,
+                "bSortable" : false,
                 "render": function (data, type, full, meta) {
                   return   '<a href="#" class="btn btn-default">'+
                                 '<i class="fw fw-view fw-helper fw-helper-circle-outline"></i> <span>View</span>'+
@@ -71,7 +72,10 @@ $(function(){
     });
     
     var tableUsers = $('#table-users').DataTable({
-        listView: true,
+        listView: {
+            checkbox: true,
+            columnFilters: true,
+        },
         ajax: "data/table.json",
         columns: [
             { "data": "Device_Type" },
@@ -86,6 +90,7 @@ $(function(){
         "columnDefs": [
             {
                 "targets": 0,
+                "bSortable" : false,
                 "render": function (data, type, full, meta) {
                   return '<div class="thumbnail icon">'+
                             '<i class="square-element text fw fw-'+data.toLowerCase()+'"></i>'+
@@ -101,6 +106,7 @@ $(function(){
             },
             {
                 "targets": 7,
+                "bSortable" : false,
                 "render": function (data, type, full, meta) {
                   return   '<a href="#" class="btn btn-default">'+
                                 '<i class="fw fw-view fw-helper fw-helper-circle-outline"></i> <span>View</span>'+

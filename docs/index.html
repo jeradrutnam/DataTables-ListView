@@ -155,82 +155,17 @@
             <h2>ListView Plugin with advance configurations</h2>
             <br>
             <table class="table table-responsive display" id="table-users">
-                <thead class="block">
-                <tr class="sort-row">
-                    <th class="content-fill no-sort"></th>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                    <th class="no-sort"></th>
-                </tr>
-                <tr class="filter-row hidden">
-                    <th data-for="Type"></th>
-                    <th data-for="Name" class="text-filter"></th>
-                    <th data-for="Position" class="select-filter"></th>
-                    <th data-for="Office" class="select-filter"></th>
-                    <th data-for="Age" class="select-filter"></th>
-                    <th data-for="Start Date" class="select-filter"></th>
-                    <th data-for="Salary" class="select-filter"></th>
-                    <th></th>
-                </tr>
-                <tr class="bulk-action-row hidden">
-                    <th colspan="8">
-                        <div class="message message-info">
-                            <h4><i class="icon fw fw-info"></i>Minor Information Message</h4>
-                            <p>Alerts don't have default classes, only base and modifier classes. A default gray alert
-                                doesn't make too much sense, so you're required to specify a type via contextual class.
-                                Choose from success, info, warning, or danger.</p>
-                        </div>
-                    </th>
-                </tr>
-                <tr class="bulk-action-row hidden">
-                    <th colspan="8">
-
-                        <ul class="tiles">
-                            <li class="square">
-                                <a class="btn square-element" data-click-event="delete-selected-rows">
-                                    <span class="icon fw-stack">
-                                        <i class="fw fw-ring fw-stack-2x"></i>
-                                        <i class="fw fw-delete fw-stack-1x"></i>
-                                    </span>
-                                    Delete Selected
-                                </a>
-                            </li>
-                            <li class="square">
-                                <a class="btn square-element" data-toggle="modal" data-target="#modalDemo">
-                                    <span class="icon fw-stack">
-                                        <i class="fw fw-ring fw-stack-2x"></i>
-                                        <i class="fw fw-edit fw-stack-1x"></i>
-                                    </span>
-                                    Edit Selected
-                                </a>
-                            </li>
-                        </ul>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalDemo" tabindex="-1" role="dialog" aria-labelledby="modalDemo">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Edit Selected</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        You about perform a bulk operation, please confirm to proceed.
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th class="no-sort"></th>
+                        <th data-filter="text">Name</th>
+                        <th data-filter="select">Position</th>
+                        <th data-filter="select">Office</th>
+                        <th data-filter="select">Age</th>
+                        <th data-filter="select">Start date</th>
+                        <th data-filter="select">Salary</th>
+                        <th class="no-sort"></th>
+                    </tr>
                 </thead>
                 <tbody>
                 <!-- Handlebars Template Appends Here -->
