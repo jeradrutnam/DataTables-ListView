@@ -4,6 +4,7 @@ var http = require('http');
 var fs = require('fs');
 
 var cwd = 'docs';
+var port = 9001;
 
 app.use('/', function (request, response) {
     
@@ -34,6 +35,6 @@ app.use('/', function (request, response) {
     
 });
 
-console.log('URL: http://localhost:9001');
+console.log('URL: http://localhost:' + port);
 
-app.listen(9001);
+app.listen(port);

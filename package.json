@@ -9,8 +9,7 @@
     "license": "Apache License, Version 2.0",
     "licenseURL": "https://github.com/jeradrutnam/DataTables-ListView/blob/master/LICENSE",
     "scripts":{
-        "build": "node build.js",
-        "prestart": "npm run build -- --watch",
+        "prestart": "node build.js --watch",
         "start": "node index.js"   
     },
     "dependencies": {
