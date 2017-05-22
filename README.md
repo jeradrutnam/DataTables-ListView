@@ -1,4 +1,4 @@
-# List View
+# [List View](http://jeradrutnam.github.io/DataTables-ListView/)
 
 ### Basic usage
 
