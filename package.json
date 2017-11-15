@@ -14,6 +14,7 @@
     },
     "dependencies": {
         "express":"^4.15.3",
-        "copy": "0.3.0"
+        "copy": "^0.3.0",
+        "chalk": "^1.1.3"
     }
 }

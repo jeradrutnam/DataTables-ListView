@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http');
 var fs = require('fs');
+var chalk = require('chalk');
 
 var cwd = 'docs';
 var port = 9001;
@@ -35,6 +36,7 @@ app.use('/', function (request, response) {
     
 });
 
-console.log('URL: http://localhost:' + port);
+console.log('Server address: ' + chalk.yellow('http://127.0.0.1:' + port + '/'));
+console.log('Server running... press ctrl-c to stop.');
 
 app.listen(port);
