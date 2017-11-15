@@ -100,7 +100,6 @@
                 
                 if(this.c.grid){
                     var toolsContainer = (this.c.layout) ? '.dataTables_tools' : '.dataTables_filter';
-                    var rows = dt.rows().nodes();
                     var gridTemplate = this.c.gridTemplate;
                     
                     dt.table().page.len(12).draw();
@@ -114,8 +113,17 @@
                                             .appendTo($(toolsContainer, elem))
                                             .on('click', function() {
                                                 $(dt.table().node()).addClass('grid-view');
-                                                rows.each(function () {
+                                                
+                                                dt.rows().nodes().each(function () {
                                                     $(this).addClass(gridTemplate);
+                                                });
+                                                
+                                                $(dt.table)
+                                                    .off('draw')
+                                                    .on('draw', function () {
+                                                        dt.rows().nodes().each(function () {
+                                                            $(this).addClass(gridTemplate);
+                                                        });
                                                 });
                                             });
                     
@@ -123,8 +131,17 @@
                                             .appendTo($(toolsContainer, elem))
                                             .on('click', function() {
                                                 $(dt.table().node()).removeClass('grid-view');
-                                                rows.each(function () {
+                                                
+                                                dt.rows().nodes().each(function () {
                                                     $(this).removeClass(gridTemplate);
+                                                });
+                                                
+                                                $(dt.table)
+                                                    .off('draw')
+                                                    .on('draw', function () {
+                                                        dt.rows().nodes().each(function () {
+                                                            $(this).removeClass(gridTemplate);
+                                                        });
                                                 });
                                             });
                 }
